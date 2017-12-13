@@ -1,0 +1,29 @@
+# GistID: 4006241
+[user]
+	email = slma0x02@gmail.com
+	name = d-theus
+[color]
+	ui = auto
+[github]
+        user = d-theus
+[fornex]
+	user = mdnp
+[alias]
+        co = checkout
+        ci = commit
+        st = status
+        br = branch
+        hist = log --pretty=format:\"%h %ad | %s%Cgreen%d%Creset [%an]\" --graph --date=short --color --all
+        type = cat-file -t
+        dump = cat-file -p
+	dif = diff --color
+[credential]
+	helper = store
+[push]
+	default = matching
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+[rerere]
+	enabled = true

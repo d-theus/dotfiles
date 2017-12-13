@@ -1,0 +1,13 @@
+*
+!/*/
+!gitconfig
+!.gitignore
+!gtkrc-2.0
+!xinitrc
+!zshrc
+!Xresources
+!rofi/*
+!nvim/*
+!i3/*
+!i3status/*
+!gtk-3.0/*

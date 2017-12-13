@@ -1,0 +1,30 @@
+st.font            : Source Code Pro for Powerline:pixelsize=14:style=Regular
+st.bold_font       : Source Code Pro for Powerline:pixelsize=14:style=Black
+st.background      : #080808
+st.foreground      : #E3EAE0
+st.cursorColor     : #8d9b53
+st.termname        : xterm-256color
+st.shell           : /usr/bin/zsh
+st.bellvolume      : 100
+st.tabspaces       : 4
+st.chscale         : 1.0
+st.cwscale         : 1.0
+
+st.color0          : #040404
+st.color1          : #872020
+st.color2          : green3
+st.color3          : yellow3
+st.color4          : blue2
+st.color5          : magenta3
+st.color6          : cyan3
+st.color7          : gray90
+st.color8          : #545466
+st.color9          : #b26f7a
+st.color10         : #9db270
+st.color11         : #b28c55
+st.color12         : #7086b2
+st.color13         : #9c77b2
+st.color14         : #82a2b2
+st.color15         : #b8b8c8
+
+st.alpha           : 250
