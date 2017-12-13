@@ -4,7 +4,7 @@
 ### Arch Linux
 Run [install.sh](./install.sh).
 ```
-curl -sL https://github.com/d-theus/dotfiles/tree/master/install.sh | sh
+curl -sL https://raw.githubusercontent.com/d-theus/dotfiles/master/install.sh | sh
 ```
 
 ## Included
