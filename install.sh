@@ -5,7 +5,7 @@ sudo pacman -Sy && sudo pacman -S --noconfirm git sudo
 # It would probably complain about existing .config,
 # so clone somewhere else and merge dirs manually
 git clone https://github.com/d-theus/dotfiles ~/.config
-sudo pacman -S --noconfirm base-devel zsh neovim i3-wm xsel compton ranger libcaca poppler atool mediainfo docker docker-compose dialog gtk-update-icon-cache gtk3 gtk-engine-murrine
+sudo pacman -S --noconfirm base-devel zsh neovim i3-wm xsel compton ranger libcaca poppler atool mediainfo docker docker-compose dialog gtk-update-icon-cache gtk3 gtk-engine-murrine xbindkeys
 mkdir -p ~/pac
 git clone https://github.com/d-theus/st-bloated ~/pac/st-bloated
 (cd ~/pac/st-bloated && sudo make clean install)
