@@ -1,30 +1,47 @@
-st.font            : Source Code Pro for Powerline:pixelsize=14:style=Regular
-st.bold_font       : Source Code Pro for Powerline:pixelsize=14:style=Black
-st.background      : #080808
-st.foreground      : #E3EAE0
-st.cursorColor     : #8d9b53
-st.termname        : xterm-256color
-st.shell           : /usr/bin/zsh
-st.bellvolume      : 100
-st.tabspaces       : 4
-st.chscale         : 1.0
-st.cwscale         : 1.0
+URxvt.intensityStyles     : false
+URxvt.background          : #080808
+URxvt.foreground          : #E3EAE0
+URxvt.depth               : 32
+URxvt.font                : xft:Source Code Pro for Powerline : pixelsize=13 : style=Regular
+URxvt.scrollBar           : false
+URxvt.cursorColor         : white
+URxvt.perl-ext-common     : default,matcher,url-select,resize-font
+!!URxvt.url-launcher        : /usr/bin/xdg-open
+URxvt.matcher.button      : 1
+URxvt.resize-font.smaller : C-Down
+URxvt.resize-font.bigger  : C-Up
+URxvt.colorUL             : #4682B4
 
-st.color0          : #040404
-st.color1          : #872020
-st.color2          : green3
-st.color3          : yellow3
-st.color4          : blue2
-st.color5          : magenta3
-st.color6          : cyan3
-st.color7          : gray90
-st.color8          : #545466
-st.color9          : #b26f7a
-st.color10         : #9db270
-st.color11         : #b28c55
-st.color12         : #7086b2
-st.color13         : #9c77b2
-st.color14         : #82a2b2
-st.color15         : #b8b8c8
+URxvt.url-select.launcher:  chromium
+URxvt.url-select.underline: true
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
 
-st.alpha           : 250
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+
+!! black
+URxvt*color0: #1b1918
+URxvt*color8: #766e6b
+!! red
+URxvt*color1: #f22c40
+URxvt*color9: #f22c40
+!! green
+URxvt*color2: #5ab738
+URxvt*color10: #5ab738
+!! yellow
+URxvt*color3: #d5911a
+URxvt*color11: #d5911a
+!! blue
+URxvt*color4: #407ee7
+URxvt*color12: #407ee7
+!! magenta
+URxvt*color5: #6666ea
+URxvt*color13: #6666ea
+!! cyan
+URxvt*color6: #00ad9c
+URxvt*color14: #00ad9c
+!! white
+URxvt*color7: #a8a19f
+URxvt*color15: #f1efee

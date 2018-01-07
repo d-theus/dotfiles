@@ -5,15 +5,14 @@ sudo pacman -Sy && sudo pacman -S --noconfirm git sudo
 # It would probably complain about existing .config,
 # so clone somewhere else and merge dirs manually
 git clone https://github.com/d-theus/dotfiles ~/.config
-sudo pacman -S --noconfirm base-devel zsh neovim i3-wm xsel compton ranger libcaca poppler atool mediainfo docker docker-compose dialog gtk-update-icon-cache gtk3 gtk-engine-murrine xbindkeys
+sudo pacman -S --noconfirm base-devel zsh neovim i3-wm xsel compton ranger libcaca poppler atool mediainfo docker docker-compose dialog gtk-update-icon-cache gtk3 gtk-engine-murrine xbindkeys rxvt-unicode rxvt-unicode-terminfo urxvt-perls
 mkdir -p ~/pac
-git clone https://github.com/d-theus/st-bloated ~/pac/st-bloated
-(cd ~/pac/st-bloated && sudo make clean install)
 sh -c 'for pkg in \
   faba-icon-theme-git \
   faba-mono-icons-git \
   gtk-theme-arc-git   \
-  moka-icon-theme-git
+  moka-icon-theme-git \
+  urxvt-resize-font-git \
   do git clone https://aur.archlinux.org/${pkg}.git ~/pac/${pkg} && cd ~/pac/${pkg} && makepkg -fi --noconfirm; done'
 
 mkdir -p ~/.fonts
