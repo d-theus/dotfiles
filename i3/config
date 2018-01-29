@@ -170,5 +170,3 @@ assign [class="VirtualBox Machine"] $ws7
 bar {
         status_command i3status
 }
-
-exec compton -f

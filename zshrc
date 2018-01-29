@@ -6,7 +6,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-PATH=$PATH:$HOME/.rbenv/bin
+PATH=$PATH:$HOME/.rbenv/bin:/home/andrew/.cargo/bin
 eval "$(rbenv init -)"
 DEFAULT_USER="andrew"
 # curl -o - https://raw.githubusercontent.com/denysdovhan/spaceship-zsh-theme/master/install.sh | zsh

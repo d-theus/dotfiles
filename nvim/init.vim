@@ -96,7 +96,7 @@ set nowrap
 set list
 set foldmethod=marker
 set foldlevelstart=20
-source ~/.vim/color/twilight256.vim
+source ~/.config/nvim/twilight256.vim
 set number
 
 hi CursorLine term=bold cterm=bold ctermbg=234

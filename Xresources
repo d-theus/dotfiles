@@ -17,6 +17,9 @@ URxvt.matcher.button      : 1
 URxvt.resize-font.smaller : C-Down
 URxvt.resize-font.bigger  : C-Up
 URxvt.colorUL             : #4682B4
+URxvt.buffered            : false
+URxvt.xrenderSync         : true
+URxvt.xrenderSyncFence    : true
 
 URxvt.url-select.launcher:  chromium
 URxvt.url-select.underline: true
