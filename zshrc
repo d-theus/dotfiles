@@ -2,11 +2,13 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
+export GOPATH=$HOME/go
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-PATH=$PATH:$HOME/.rbenv/bin:/home/andrew/.cargo/bin
+PATH=$PATH:$HOME/.rbenv/bin:/home/andrew/.cargo/bin:$HOME/go/bin
 eval "$(rbenv init -)"
 DEFAULT_USER="andrew"
 # curl -o - https://raw.githubusercontent.com/denysdovhan/spaceship-zsh-theme/master/install.sh | zsh
@@ -41,20 +43,20 @@ SPACESHIP_GIT_BRANCH_COLOR=green
 
 # DOCKER
 SPACESHIP_DOCKER_SHOW=true
-SPACESHIP_DOCKER_SYMBOL=' '
+SPACESHIP_DOCKER_SYMBOL='dkr '
 
 # NVM
 SPACESHIP_NODE_SHOW=true
-SPACESHIP_NODE_SYMBOL='⬢'
+SPACESHIP_NODE_SYMBOL='nvm'
 
 # RUBY
 SPACESHIP_RUBY_SHOW=true
-SPACESHIP_RUBY_SYMBOL=' '
+SPACESHIP_RUBY_SYMBOL='rb '
 
 # SWIFT
 SPACESHIP_SWIFT_SHOW_LOCAL=false
 SPACESHIP_SWIFT_SHOW_GLOBAL=false
-SPACESHIP_SWIFT_SYMBOL='🐦'
+SPACESHIP_SWIFT_SYMBOL='sw'
 
 # XCODE
 SPACESHIP_XCODE_SHOW_LOCAL=false
@@ -103,29 +105,28 @@ zstyle ':comletion:*' menu select=2
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(last-working-dir git archlinux systemd vi-mode ranger docker docker-compose netctl bundler rails-comletions)
+plugins=(last-working-dir git archlinux systemd vi-mode docker docker-compose bundler)
 
 source $ZSH/oh-my-zsh.sh
+
+function uchi_vpn() { cd ~/Downloads/dorofeev-$1 && sudo openvpn *.ovpn }
 
 # Customize to your needs...
 
 #alias chromium="chromium --disable-accelerated-compositing"  
 alias ra="ranger_cd"
-alias dhcp="sudo systemctl start dhcpcd@enp0s20u2.service"
 alias um="udiskie-mount-asroot"
 alias uum="sudo udiskie-umount -a"
 alias wifi="sudo wifi-select"
 alias ll="ls -clah"
-alias ttodo="vim `date +%d-%m-%y`.taskpaper"
 alias sshx="TERM=xterm-256color ssh"
-alias vimr="mux start vimruby"
-alias wi="sudo netcfg reconnect"
-alias extmon="sudo xrandr --output HDMI-1 --auto && sudo xrandr --output HDMI-1 --above eDP-1"
-alias extproj="sudo xrandr --output VGA-1 --auto && sudo xrandr --output VGA-1 --same-as eDP-1"
-alias nomon="sudo xrandr --output HDMI-1 --off"
 alias vim="nvim"
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
+alias vpn='uchi_vpn'
+alias novpn='sudo pkill openvpn'
 
 export EDITOR=nvim
 
+lwd
+export GO111MODULE=on

@@ -64,11 +64,12 @@
 ## Control + mouse button 2 release event starts rxvt
 #"rxvt"
 #  Control + b:2 + Release
-"amixer set Master 5%+"
+#
+"pactl set-sink-volume 0 +5%"
   XF86AudioRaiseVolume
-"amixer set Master 5%-"
+"pactl set-sink-volume 0 -5%"
   XF86AudioLowerVolume
-"amixer set Master toggle"
+"pactl set-sink-mute 0 toggle"
   XF86AudioMute
 
  

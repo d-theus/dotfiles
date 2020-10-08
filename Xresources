@@ -8,10 +8,10 @@ URxvt.intensityStyles     : false
 URxvt.background          : #080808
 URxvt.foreground          : #E3EAE0
 URxvt.depth               : 32
-URxvt.font                : xft:Source Code Pro for Powerline : pixelsize=13 : style=Regular : antialias: true
+URxvt.font                : xft: JetBrains Mono: pixelsize=12 : style=Regular : antialias: true
 URxvt.scrollBar           : false
 URxvt.cursorColor         : white
-URxvt.perl-ext-common     : default,matcher,url-select,resize-font
+URxvt.perl-ext-common     : default,matcher,url-select,resize-font,keyboard-select
 !!URxvt.url-launcher        : /usr/bin/xdg-open
 URxvt.matcher.button      : 1
 URxvt.resize-font.smaller : C-Down
@@ -29,6 +29,12 @@ URxvt.keysym.M-s:           perl:keyboard-select:search
 
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+
+URxvt*scrollTtyOutput: false
+URxvt*scrollWithBuffer: true
+URxvt*scrollTtyKeypress: true
+URxvt.iso14755: true
+URxvt.iso14755_52: false
 
 !! black
 URxvt*color0: #1b1918

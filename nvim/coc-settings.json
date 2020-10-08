@@ -1,0 +1,8 @@
+{
+  "solargraph.checkGemVersion": false,
+  "solargraph.completion": true,
+  "solargraph.hover": true,
+  "solargraph.definitions": true,
+  "solargraph.formatting": true,
+  "solargraph.diagnostics": true
+}
