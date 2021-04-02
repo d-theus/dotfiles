@@ -8,8 +8,9 @@ export GOPATH=$HOME/go
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-PATH=$PATH:$HOME/.rbenv/bin:/home/andrew/.cargo/bin:$HOME/go/bin
+PATH=$PATH:$HOME/.rbenv/bin:/home/andrew/.cargo/bin:$HOME/go/bin:$HOME/.tfenv/bin
 eval "$(rbenv init -)"
+PATH=/usr/local/bin:$PATH
 DEFAULT_USER="andrew"
 # curl -o - https://raw.githubusercontent.com/denysdovhan/spaceship-zsh-theme/master/install.sh | zsh
 ZSH_THEME="spaceship"
@@ -43,7 +44,7 @@ SPACESHIP_GIT_BRANCH_COLOR=green
 
 # DOCKER
 SPACESHIP_DOCKER_SHOW=true
-SPACESHIP_DOCKER_SYMBOL='dkr '
+SPACESHIP_DOCKER_SYMBOL=''
 
 # NVM
 SPACESHIP_NODE_SHOW=true
@@ -51,7 +52,7 @@ SPACESHIP_NODE_SYMBOL='nvm'
 
 # RUBY
 SPACESHIP_RUBY_SHOW=true
-SPACESHIP_RUBY_SYMBOL='rb '
+SPACESHIP_RUBY_SYMBOL=''
 
 # SWIFT
 SPACESHIP_SWIFT_SHOW_LOCAL=false
@@ -68,7 +69,7 @@ SPACESHIP_VENV_SHOW=false
 
 # PYENV
 SPACESHIP_PYENV_SHOW=true
-SPACESHIP_PYENV_SYMBOL='🐍'
+SPACESHIP_PYENV_SYMBOL=''
 
 # VI_MODE
 SPACESHIP_VI_MODE_SHOW=true
@@ -105,11 +106,11 @@ zstyle ':comletion:*' menu select=2
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(last-working-dir git archlinux systemd vi-mode docker docker-compose bundler)
+plugins=(git archlinux systemd vi-mode docker docker-compose bundler)
 
 source $ZSH/oh-my-zsh.sh
 
-function uchi_vpn() { cd ~/Downloads/dorofeev-$1 && sudo openvpn *.ovpn }
+function uchi_vpn() { (cd ~/Downloads && sudo openvpn $1.ovpn) }
 
 # Customize to your needs...
 
@@ -127,6 +128,5 @@ alias vpn='uchi_vpn'
 alias novpn='sudo pkill openvpn'
 
 export EDITOR=nvim
-
-lwd
 export GO111MODULE=on
+export TERM=xterm

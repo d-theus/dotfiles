@@ -32,11 +32,13 @@ call dein#add('sgur/vim-editorconfig')
 
 ""  UI
 call dein#add('flazz/vim-colorschemes')
-call dein#add('vim-scripts/The-NERD-tree', {'on_cmd': 'NERDTreeToggle'})
+"" call dein#add('vim-scripts/The-NERD-tree', {'on_cmd': 'NERDTreeToggle'})
 call dein#add('vim-scripts/mru.vim')
 call dein#add('vim-scripts/xterm-color-table.vim')
 call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
+call dein#add('ryanoasis/vim-devicons')
+call dein#add('liuchengxu/vim-which-key')
 
 "" MOTION / HELPERS
 call dein#add('vim-scripts/surround.vim')
@@ -48,9 +50,11 @@ call dein#add('vim-scripts/Tabular')
 call dein#add('vim-scripts/matchit.zip')
 call dein#add('triglav/vim-visual-increment')
 call dein#add('junegunn/vim-easy-align')
+call dein#add('mattn/emmet-vim')
 
 "" CODE
 call dein#add('Yggdroot/indentLine')
+" call dein#add('nvim-treesitter/nvim-treesitter')
 call dein#add('vim-scripts/The-NERD-Commenter')
 call dein#add('vim-scripts/ruby.vim', {'on_ft': ['ruby']})
 call dein#add('vim-scripts/ruby-matchit', {'on_ft': ['ruby', 'eruby']})
@@ -73,6 +77,7 @@ call dein#add('fatih/vim-go', {'on_ft': ['go']})
 call dein#add('HerringtonDarkholme/yats.vim', {'on_ft': ['typescript']})
 call dein#add('leafgarland/typescript-vim', {'on_ft': ['typescript']})
 call dein#add('mhartington/nvim-typescript', {'on_ft': ['typescript']})
+call dein#add('stephpy/vim-yaml', {'on_ft': ['yaml']})
 
 call dein#end()
 filetype plugin indent on
@@ -104,8 +109,10 @@ set nowrap
 set list
 set foldmethod=marker
 set foldlevelstart=20
-source ~/.config/nvim/twilight256.vim
+" source ~/.config/nvim/twilight256.vim
+colorscheme jellybeans
 set number
+set timeoutlen=350
 
 hi CursorLine term=bold cterm=bold ctermbg=234
 hi Pmenu ctermbg=235 ctermfg=255
@@ -132,6 +139,7 @@ let g:airline_mode_map = {
 
 let mapleader=","
 let localleader="\\"
+nnoremap <silent> <leader> :WhichKey ','<CR>
 
 set diffopt=vertical
 
@@ -149,6 +157,8 @@ nnoremap <F3> :CocList files<CR>
 nnoremap <F5> :FufRenewCache<CR>
 nnoremap <F11> :echo 'nope'<CR>
 
+let g:NERDSpaceDelims = 1
+let g:NERDCommentEmptyLines = 1
 
 let g:fuf_coveragefile_exclude = '\vnode_modules.*|tmp/.*|public/uploads/.*|log/.*|fonts/.*|assets/images/.*|squashfs-root/.*|content-fake|content-cache'
 
@@ -167,7 +177,8 @@ cnoreabbrev Ц w
 
 xmap ga <Plug>(EasyAlign)
 
-nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-n> :CocCommand explorer<CR>
+nnoremap <leader>e :CocCommand explorer<CR>
 let g:nerdtree_open_cmd = 'open'
 
 let g:neoterm_position = 'vertical'
@@ -230,14 +241,76 @@ let g:go_fmt_experimental = 1
 :au BufNewFile,BufRead *.taskpaper set ft=taskpaper
 :au BufNewFile,BufRead *.tex set ft=tex
 :au BufNewFile,BufRead *.pu set ft=plantuml
+:au BufNewFile,BufRead *.yaml,*.yml set ft=yaml foldmethod=indent
 
 " Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+let g:go_doc_keywordprg_enabled=0
+nnoremap K :call CocActionAsync('doHover')<CR>
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+" function! s:show_documentation()
+  " if (index(['vim','help'], &filetype) >= 0)
+    " execute 'h '.expand('<cword>')
+  " else
+    " call CocAction('doHover')
+  " endif
+" endfunction
+
+let g:which_key_map = {}
+let g:which_key_map['/'] = [ '<plug>NERDCommenterToggle'          , 'comment' ]
+let g:which_key_map['.'] = [ ':e $MYVIMRC'                        , 'open init' ]
+let g:which_key_map[';'] = [ ':Commands'                          , 'commands' ]
+let g:which_key_map['='] = [ '<C-W>='                             , 'balance windows' ]
+let g:which_key_map['d'] = [ ':Bdelete'                           , 'delete buffer']
+let g:which_key_map['e'] = [ ':CocCommand explorer'               , 'explorer' ]
+let g:which_key_map['h'] = [ '<C-W>s'                             , 'split below']
+let g:which_key_map['m'] = [ ':call WindowSwap#EasyWindowSwap()'  , 'move window' ]
+let g:which_key_map['n'] = [ ':let @/ = ""'                       , 'no highlight' ]
+let g:which_key_map['p'] = [ ':Files'                             , 'search files' ]
+let g:which_key_map['q'] = [ 'q'                                  , 'quit' ]
+let g:which_key_map['r'] = [ ':RnvimrToggle'                      , 'ranger' ]
+let g:which_key_map['u'] = [ ':UndotreeToggle'                    , 'undo tree']
+let g:which_key_map['v'] = [ '<C-W>v'                             , 'split right']
+let g:which_key_map['W'] = [ 'w'                                  , 'write' ]
+let g:which_key_map['z'] = [ 'Goyo'                               , 'zen' ]
+
+let g:which_key_map.l = {
+      \ 'name' : '+lsp' ,
+      \ '.' : [':CocConfig'                          , 'config'],
+      \ ';' : ['<Plug>(coc-refactor)'                , 'refactor'],
+      \ 'a' : ['<Plug>(coc-codeaction)'              , 'line action'],
+      \ 'A' : ['<Plug>(coc-codeaction-selected)'     , 'selected action'],
+      \ 'b' : [':CocNext'                            , 'next action'],
+      \ 'B' : [':CocPrev'                            , 'prev action'],
+      \ 'c' : [':CocList commands'                   , 'commands'],
+      \ 'd' : ['<Plug>(coc-definition)'              , 'definition'],
+      \ 'D' : ['<Plug>(coc-declaration)'             , 'declaration'],
+      \ 'e' : [':CocList extensions'                 , 'extensions'],
+      \ 'f' : ['<Plug>(coc-format-selected)'         , 'format selected'],
+      \ 'F' : ['<Plug>(coc-format)'                  , 'format'],
+      \ 'h' : ['<Plug>(coc-float-hide)'              , 'hide'],
+      \ 'i' : ['<Plug>(coc-implementation)'          , 'implementation'],
+      \ 'I' : [':CocList diagnostics'                , 'diagnostics'],
+      \ 'j' : ['<Plug>(coc-float-jump)'              , 'float jump'],
+      \ 'l' : ['<Plug>(coc-codelens-action)'         , 'code lens'],
+      \ 'n' : ['<Plug>(coc-diagnostic-next)'         , 'next diagnostic'],
+      \ 'N' : ['<Plug>(coc-diagnostic-next-error)'   , 'next error'],
+      \ 'o' : [':Vista!!'                            , 'outline'],
+      \ 'O' : [':CocList outline'                    , 'outline'],
+      \ 'p' : ['<Plug>(coc-diagnostic-prev)'         , 'prev diagnostic'],
+      \ 'P' : ['<Plug>(coc-diagnostic-prev-error)'   , 'prev error'],
+      \ 'q' : ['<Plug>(coc-fix-current)'             , 'quickfix'],
+      \ 'r' : ['<Plug>(coc-references)'              , 'references'],
+      \ 'R' : ['<Plug>(coc-rename)'                  , 'rename'],
+      \ 's' : [':CocList -I symbols'                 , 'references'],
+      \ 'S' : [':CocList snippets'                   , 'snippets'],
+      \ 't' : ['<Plug>(coc-type-definition)'         , 'type definition'],
+      \ 'u' : [':CocListResume'                      , 'resume list'],
+      \ 'U' : [':CocUpdate'                          , 'update CoC'],
+      \ 'z' : [':CocDisable'                         , 'disable CoC'],
+      \ 'Z' : [':CocEnable'                          , 'enable CoC'],
+      \ }
+
+call which_key#register(',', "g:which_key_map")
+
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+xmap <leader>x  <Plug>(coc-convert-snippet)
