@@ -1,5 +1,6 @@
 "GistID: 3965473
 
+set noswapfile
 set mouse=
 filetype off                   " required!
 set runtimepath+=$HOME/.vim/repos/github.com/Shougo/dein.vim
@@ -14,7 +15,7 @@ set updatetime=300
 
 set shortmess+=c
 
-set signcolumn=yes
+set signcolumn=number
 
 call dein#begin('$HOME/.vim')
 
@@ -61,8 +62,8 @@ call dein#add('vim-scripts/ruby-matchit', {'on_ft': ['ruby', 'eruby']})
 call dein#add('hail2u/vim-css3-syntax', {'on_ft': ['css', 'less', 'scss', 'sass']})
 call dein#add('vim-scripts/Markdown', {'on_ft': ['markdown', 'gmarkdown']})
 call dein#add('jtratner/vim-flavored-markdown', {'on_ft': ['markdown', 'gmarkdown']})
-call dein#add('pangloss/vim-javascript', {'on_ft': ['javascript', 'jsx']})
-call dein#add('mxw/vim-jsx', {'on_ft': ['javascript', 'jsx']})
+call dein#add('pangloss/vim-javascript', {'on_ft': ['javascript']})
+" call dein#add('chemzqm/vim-jsx-improve', {'on_ft': ['jsx', 'javascriptreact']})
 call dein#add('vim-scripts/vim-jsbeautify', {'on_ft': ['javascript', 'js']})
 call dein#add('thoughtbot/vim-rspec', {'on_ft': ['ruby']})
 call dein#add('tpope/vim-Bundler')
@@ -74,10 +75,16 @@ call dein#add('elixir-lang/vim-elixir', {'on_ft': ['elixir', 'ex']})
 call dein#add('elzr/vim-json', {'on_ft': ['json']})
 call dein#add('rhysd/vim-crystal', {'on_ft': ['crystal']})
 call dein#add('fatih/vim-go', {'on_ft': ['go']})
-call dein#add('HerringtonDarkholme/yats.vim', {'on_ft': ['typescript']})
-call dein#add('leafgarland/typescript-vim', {'on_ft': ['typescript']})
-call dein#add('mhartington/nvim-typescript', {'on_ft': ['typescript']})
+call dein#add('cespare/vim-toml', {'on_ft': ['toml']})
+call dein#add('codelitt/vim-qtpl', {'on_ft': ['qtpl']})
+" call dein#add('HerringtonDarkholme/yats.vim', {'on_ft': ['typescript']})
+" call dein#add('leafgarland/typescript-vim', {'on_ft': ['typescript']})
+" call dein#add('mhartington/nvim-typescript', {'on_ft': ['typescript']})
+" call dein#add('peitalin/vim-jsx-typescript', {'on_ft': ['tsx']})
+
 call dein#add('stephpy/vim-yaml', {'on_ft': ['yaml']})
+call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'], 'build': 'sh -c "cd app && yarn install"' })
+call dein#add('leafOfTree/vim-svelte-plugin')
 
 call dein#end()
 filetype plugin indent on
@@ -110,15 +117,19 @@ set list
 set foldmethod=marker
 set foldlevelstart=20
 " source ~/.config/nvim/twilight256.vim
-colorscheme jellybeans
+colorscheme hybrid_material
 set number
 set timeoutlen=350
+set guifont=JetBrains\ Mono\ Medium\ Regular:h13,Symbols\ Nerd\ Font:h13
 
-hi CursorLine term=bold cterm=bold ctermbg=234
-hi Pmenu ctermbg=235 ctermfg=255
-hi PmenuSel ctermbg=255 ctermfg=235
-hi SpellBad ctermbg=0 ctermfg=9
-hi SpellCap ctermbg=0 ctermfg=9
+" hi CursorLine term=bold cterm=bold ctermbg=234
+" hi Pmenu ctermbg=235 ctermfg=255
+" hi PmenuSel ctermbg=255 ctermfg=235
+" hi SpellBad ctermbg=0 ctermfg=9
+" hi SpellCap ctermbg=0 ctermfg=9
+hi MatchParen ctermbg=yellow ctermfg=black cterm=standout
+hi CocHighlightText cterm=none ctermbg=darkgray ctermfg=white
+
 
 set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
 
@@ -142,9 +153,6 @@ let localleader="\\"
 nnoremap <silent> <leader> :WhichKey ','<CR>
 
 set diffopt=vertical
-
-nmap <Up> [e
-nmap <Down> ]e
 
 nnoremap <leader>" :s/'/"/g<CR>
 nnoremap <leader>' :s/"/'/g<CR>
@@ -213,6 +221,7 @@ let g:rails_projections = {
 "{{{ js
 :au BufNewFile,BufRead *.js set foldmethod=syntax
 :au BufNewFile,BufRead *.js syntax region foldBraces start=\{\ end=\}\ transparent fold keepend extend
+:au BufNewFile,BufRead *.tsx set ft=typescript.tsx
 "}}}
 "{{{ html, haml, slim
 :au BufNewFile,BufRead *.slim set foldmethod=indent
@@ -229,12 +238,10 @@ let g:vim_json_syntax_concealcursor=""
 "
 "{{{ go
 let g:go_fmt_experimental = 1
+let g:go_imports_autosave = 0
 :au BufNewFile,BufRead *.go set tabstop=4 foldmethod=syntax
 "}}}
 "
-"{{{ typescript
-:au BufNewFile,BufRead *.ts,*.tsx set ft=typescript
-"}}}
 
 
 :au BufNewFile,BufRead *.md set ft=ghmarkdown
@@ -246,6 +253,7 @@ let g:go_fmt_experimental = 1
 " Use K to show documentation in preview window.
 let g:go_doc_keywordprg_enabled=0
 nnoremap K :call CocActionAsync('doHover')<CR>
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " function! s:show_documentation()
   " if (index(['vim','help'], &filetype) >= 0)
@@ -294,7 +302,7 @@ let g:which_key_map.l = {
       \ 'l' : ['<Plug>(coc-codelens-action)'         , 'code lens'],
       \ 'n' : ['<Plug>(coc-diagnostic-next)'         , 'next diagnostic'],
       \ 'N' : ['<Plug>(coc-diagnostic-next-error)'   , 'next error'],
-      \ 'o' : [':Vista!!'                            , 'outline'],
+      \ 'o' : [':CocCommand editor.action.organizeImport', 'org imports'],
       \ 'O' : [':CocList outline'                    , 'outline'],
       \ 'p' : ['<Plug>(coc-diagnostic-prev)'         , 'prev diagnostic'],
       \ 'P' : ['<Plug>(coc-diagnostic-prev-error)'   , 'prev error'],

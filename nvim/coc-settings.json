@@ -1,4 +1,13 @@
 {
+  "codeLens.enable": true,
+  "diagnostic.separateRelatedInformationAsDiagnostics": true,
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false,
+  "go.goplsOptions": {
+    "analyses": {
+      "unreachable": true
+    }
+  },
   "solargraph.checkGemVersion": false,
   "solargraph.completion": true,
   "solargraph.hover": true,
@@ -12,5 +21,20 @@
     "v": "open:vsplit",
     ".": "toggleHidden",
     "r": "refresh"
-  }
+  },
+  "languageserver": {
+    "golangci-lint-languageserver": {
+      "command": "golangci-lint-langserver",
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "command": ["golangci-lint", "run", "--out-format", "json"]
+      }
+    }
+  },
+  "prettier.eslintIntegration": true,
+  "prettier.tslintIntegration": true,
+  "eslint.workingDirectories": [{
+    "directory": "/home/andrew/work/shaman/ui",
+    "changeProcessCWD": true
+  }]
 }

@@ -11,6 +11,7 @@ general {
         interval = 5
 }
 
+order += "cpu_temperature 0"
 order += "load"
 order += "disk /"
 order += "disk /home"
@@ -52,4 +53,8 @@ disk "/" {
 
 disk "/home" {
         format = " h:%avail"
+}
+
+cpu_temperature 0 {
+  path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input"
 }

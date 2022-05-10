@@ -8,7 +8,7 @@ export GOPATH=$HOME/go
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-PATH=$PATH:$HOME/.rbenv/bin:/home/andrew/.cargo/bin:$HOME/go/bin:$HOME/.tfenv/bin
+PATH=$PATH:$HOME/.rbenv/bin:/home/andrew/.cargo/bin:$HOME/go/bin:$HOME/.tfenv/bin:$HOME/.goland/bin
 eval "$(rbenv init -)"
 PATH=/usr/local/bin:$PATH
 DEFAULT_USER="andrew"
@@ -99,8 +99,7 @@ CASE_SENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 
 fpath=(~/.oh-my-zsh/completions $fpath)
-autoload -U compinit
-compinit
+autoload -Uz compinit; compinit
 zstyle ':comletion:*' menu select=2
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)

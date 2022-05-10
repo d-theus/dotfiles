@@ -180,3 +180,7 @@ bar {
 
 new_window 1pixel
 default_border pixel 1
+
+smart_gaps inverse_outer
+gaps horizontal 400
+gaps vertical 10
