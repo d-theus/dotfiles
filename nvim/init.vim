@@ -8,6 +8,7 @@ set runtimepath+=$HOME/.vim/repos/github.com/Shougo/dein.vim
 set hidden
 set nobackup
 set nowritebackup
+set bg=light
 
 set cmdheight=2
 
@@ -32,8 +33,7 @@ call dein#add('neoclide/coc.nvim', {'merge':0, 'rev': 'release'})
 call dein#add('sgur/vim-editorconfig')
 
 ""  UI
-call dein#add('flazz/vim-colorschemes')
-"" call dein#add('vim-scripts/The-NERD-tree', {'on_cmd': 'NERDTreeToggle'})
+call dein#add('EdenEast/nightfox.nvim')
 call dein#add('vim-scripts/mru.vim')
 call dein#add('vim-scripts/xterm-color-table.vim')
 call dein#add('vim-airline/vim-airline')
@@ -55,16 +55,16 @@ call dein#add('mattn/emmet-vim')
 
 "" CODE
 call dein#add('Yggdroot/indentLine')
-" call dein#add('nvim-treesitter/nvim-treesitter')
+call dein#add('nvim-treesitter/nvim-treesitter', {'rev': 'b401b74'})
 call dein#add('vim-scripts/The-NERD-Commenter')
 call dein#add('vim-scripts/ruby.vim', {'on_ft': ['ruby']})
 call dein#add('vim-scripts/ruby-matchit', {'on_ft': ['ruby', 'eruby']})
 call dein#add('hail2u/vim-css3-syntax', {'on_ft': ['css', 'less', 'scss', 'sass']})
 call dein#add('vim-scripts/Markdown', {'on_ft': ['markdown', 'gmarkdown']})
 call dein#add('jtratner/vim-flavored-markdown', {'on_ft': ['markdown', 'gmarkdown']})
-call dein#add('pangloss/vim-javascript', {'on_ft': ['javascript']})
+" call dein#add('pangloss/vim-javascript', {'on_ft': ['javascript']})
 " call dein#add('chemzqm/vim-jsx-improve', {'on_ft': ['jsx', 'javascriptreact']})
-call dein#add('vim-scripts/vim-jsbeautify', {'on_ft': ['javascript', 'js']})
+" call dein#add('vim-scripts/vim-jsbeautify', {'on_ft': ['javascript', 'js']})
 call dein#add('thoughtbot/vim-rspec', {'on_ft': ['ruby']})
 call dein#add('tpope/vim-Bundler')
 call dein#add('othree/html5.vim', {'on_ft': ['html']})
@@ -88,11 +88,11 @@ call dein#add('leafOfTree/vim-svelte-plugin')
 
 call dein#end()
 filetype plugin indent on
-syntax enable
+"syntax enable
 
 "{{{ filetype independent
 set shell=/usr/bin/zsh
-syntax on
+"syntax on
 filetype on
 set encoding=utf-8
 
@@ -117,7 +117,7 @@ set list
 set foldmethod=marker
 set foldlevelstart=20
 " source ~/.config/nvim/twilight256.vim
-colorscheme hybrid_material
+colorscheme nordfox
 set number
 set timeoutlen=350
 set guifont=JetBrains\ Mono\ Medium\ Regular:h13,Symbols\ Nerd\ Font:h13
@@ -127,8 +127,10 @@ set guifont=JetBrains\ Mono\ Medium\ Regular:h13,Symbols\ Nerd\ Font:h13
 " hi PmenuSel ctermbg=255 ctermfg=235
 " hi SpellBad ctermbg=0 ctermfg=9
 " hi SpellCap ctermbg=0 ctermfg=9
-hi MatchParen ctermbg=yellow ctermfg=black cterm=standout
-hi CocHighlightText cterm=none ctermbg=darkgray ctermfg=white
+" hi CocHighlightText cterm=none ctermbg=darkgray ctermfg=white
+" hi CocErrorVirtualText ctermfg=White ctermbg=Red
+" hi CocWarningVirtualText ctermfg=Black ctermbg=DarkYellow
+" hi CocHintVirtualText ctermfg=Black ctermbg=LightBlue
 
 
 set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
@@ -322,3 +324,11 @@ call which_key#register(',', "g:which_key_map")
 
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 xmap <leader>x  <Plug>(coc-convert-snippet)
+
+lua <<EOLUA
+require'nvim-treesitter.configs'.setup({
+  highlight = {
+    enable = true,
+  },
+})
+EOLUA
