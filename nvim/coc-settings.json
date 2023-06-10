@@ -31,8 +31,7 @@
       }
     }
   },
-  "prettier.eslintIntegration": true,
-  "prettier.tslintIntegration": true,
+  "outline.keepWindow": true,
   "eslint.workingDirectories": [{
     "directory": "/home/andrew/work/shaman/ui",
     "changeProcessCWD": true

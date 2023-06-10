@@ -40,6 +40,7 @@ call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
 call dein#add('ryanoasis/vim-devicons')
 call dein#add('liuchengxu/vim-which-key')
+call dein#add('romgrk/barbar.nvim')
 
 "" MOTION / HELPERS
 call dein#add('vim-scripts/surround.vim')
@@ -257,6 +258,8 @@ let g:go_doc_keywordprg_enabled=0
 nnoremap K :call CocActionAsync('doHover')<CR>
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+:au User CocNvimInit call CocActionAsync('showOutline')
+
 " function! s:show_documentation()
   " if (index(['vim','help'], &filetype) >= 0)
     " execute 'h '.expand('<cword>')
@@ -268,20 +271,15 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 let g:which_key_map = {}
 let g:which_key_map['/'] = [ '<plug>NERDCommenterToggle'          , 'comment' ]
 let g:which_key_map['.'] = [ ':e $MYVIMRC'                        , 'open init' ]
-let g:which_key_map[';'] = [ ':Commands'                          , 'commands' ]
 let g:which_key_map['='] = [ '<C-W>='                             , 'balance windows' ]
-let g:which_key_map['d'] = [ ':Bdelete'                           , 'delete buffer']
 let g:which_key_map['e'] = [ ':CocCommand explorer'               , 'explorer' ]
 let g:which_key_map['h'] = [ '<C-W>s'                             , 'split below']
 let g:which_key_map['m'] = [ ':call WindowSwap#EasyWindowSwap()'  , 'move window' ]
 let g:which_key_map['n'] = [ ':let @/ = ""'                       , 'no highlight' ]
 let g:which_key_map['p'] = [ ':Files'                             , 'search files' ]
 let g:which_key_map['q'] = [ 'q'                                  , 'quit' ]
-let g:which_key_map['r'] = [ ':RnvimrToggle'                      , 'ranger' ]
-let g:which_key_map['u'] = [ ':UndotreeToggle'                    , 'undo tree']
 let g:which_key_map['v'] = [ '<C-W>v'                             , 'split right']
 let g:which_key_map['W'] = [ 'w'                                  , 'write' ]
-let g:which_key_map['z'] = [ 'Goyo'                               , 'zen' ]
 
 let g:which_key_map.l = {
       \ 'name' : '+lsp' ,
@@ -305,7 +303,7 @@ let g:which_key_map.l = {
       \ 'n' : ['<Plug>(coc-diagnostic-next)'         , 'next diagnostic'],
       \ 'N' : ['<Plug>(coc-diagnostic-next-error)'   , 'next error'],
       \ 'o' : [':CocCommand editor.action.organizeImport', 'org imports'],
-      \ 'O' : [':CocList outline'                    , 'outline'],
+      \ 'O' : [':CocOutline'                         , 'outline'],
       \ 'p' : ['<Plug>(coc-diagnostic-prev)'         , 'prev diagnostic'],
       \ 'P' : ['<Plug>(coc-diagnostic-prev-error)'   , 'prev error'],
       \ 'q' : ['<Plug>(coc-fix-current)'             , 'quickfix'],
